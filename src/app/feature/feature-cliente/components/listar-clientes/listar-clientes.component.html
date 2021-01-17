@@ -1,0 +1,23 @@
+<table border="1px">
+  <thead>
+    <tr>
+      <th>Protocolo</th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Email</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.protocolo }}</td>
+      <td>{{ cliente.nome}}</td>
+      <td>{{ cliente.cpf }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>
+        <button (click)="openForm(cliente.id)">Editar</button>
+        <button (click)="delet(cliente.id)">Excluir</button>
+        </td>
+    </tr>
+  </tbody>
+</table>

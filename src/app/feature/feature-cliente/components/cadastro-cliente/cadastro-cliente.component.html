@@ -1,0 +1,129 @@
+
+<button type="button"(click)="voltar()">
+   voltar
+</button>
+<form [formGroup]="clienteForm">
+
+  <div *ngIf="isAlterar()">
+
+   <h1>protocolo : {{ cliente.protocolo }}</h1>
+  </div>
+
+  <div>
+    <label for="nome">Nome: </label>
+    <input
+    type="text"
+    formControlName="nome"
+     name="nome"
+     id="nome"
+     [ngClass]="[
+        isFieldValid(clienteForm, 'nome') ? 'error-input' : ''
+      ]">
+  </div>
+
+  <div class="mt-1 text-danger" *ngIf="isFieldValid(clienteForm, 'nome')">
+    {{ clienteForm.getFirstErrorFrom('nome', 'nome') }}
+  </div>
+
+  <div>
+    <label for="cpf">CPF: </label>
+    <input type="text"
+      [textMask]="maskFactory.createCpf()"
+      formControlName="cpf"
+      name="cpf"
+      id="cpf"
+      [ngClass]="[
+        isFieldValid(clienteForm, 'cpf') ? 'error-input' : ''
+      ]">
+  </div>
+
+  <div class="mt-1 text-danger" *ngIf="isFieldValid(clienteForm, 'cpf')">
+    {{ clienteForm.getFirstErrorFrom('cpf', 'cpf') }}
+  </div>
+
+  <div>
+    <label for="dataNascimento">Data Nascimento: </label>
+    <input type="date"
+      formControlName="dataNascimento"
+      name="dataNascimento"
+      id="dataNascimento"
+      [ngClass]="[
+        isFieldValid(clienteForm, 'dataNascimento') ? 'error-input' : ''
+      ]">
+  </div>
+
+  <div class="mt-1 text-danger" *ngIf="isFieldValid(clienteForm, 'dataNascimento')">
+    {{ clienteForm.getFirstErrorFrom('dataNascimento', 'dataNascimento') }}
+  </div>
+
+  <div>
+    <label for="email">Email: </label>
+    <input type="email"
+      formControlName="email"
+      name="email"
+      id="email"
+      [ngClass]="[
+        isFieldValid(clienteForm, 'email')? 'error-input' : ''
+      ]">
+  </div>
+
+  <div class="mt-1 text-danger" *ngIf="isFieldValid(clienteForm, 'email')">
+    {{ clienteForm.getFirstErrorFrom('email', 'email') }}
+  </div>
+
+  <div>
+    <label for="cep">CEP: </label>
+    <input
+      [textMask]="maskFactory.createCep()"
+      type="text"
+      formControlName="cep"
+      name="cep"
+      id="cep"
+      [ngClass]="[
+        isFieldValid(clienteForm, 'cep')? 'error-input' : ''
+      ]">
+  </div>
+
+  <div class="mt-1 text-danger" *ngIf="isFieldValid(clienteForm, 'cep')">
+    {{ clienteForm.getFirstErrorFrom('cep', 'cep') }}
+  </div>
+
+  <div>
+    <label for="endereco">Endereço</label>
+    <input type="text"
+      formControlName="endereco"
+      name="endereco"
+      id="endereco"
+      [ngClass]="[
+        isFieldValid(clienteForm, 'endereco') ? 'error-input' : ''
+      ]">
+  </div>
+
+  <div class="mt-1 text-danger" *ngIf="isFieldValid(clienteForm, 'endereco')">
+    {{ clienteForm.getFirstErrorFrom('endereco', 'endereco') }}
+  </div>
+
+  <div>
+    <label for="bairro">Bairro</label>
+    <input type="text"
+      formControlName="bairro"
+      name="bairro"
+      id="bairro"
+      [ngClass]="[
+        isFieldValid(clienteForm, 'bairro') ? 'error-input' : ''
+      ]">
+  </div>
+
+  <div class="mt-1 text-danger" *ngIf="isFieldValid(clienteForm, 'bairro')">
+    {{ clienteForm.getFirstErrorFrom('bairro', 'bairro') }}
+  </div>
+
+  <button
+  type="button"
+  id="salvar-cliente"
+  (click)="salvar()">
+     Salvar
+  </button>
+</form>
+
+
